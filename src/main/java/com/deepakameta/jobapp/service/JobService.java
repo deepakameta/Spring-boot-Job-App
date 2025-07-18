@@ -11,7 +11,7 @@ public interface JobService {
 
     String createJob(Job job);
 
-    String updateJob(Long jobId, Job job) throws JobException;
+    String updateJob(long jobId, Job job) throws JobException;
 
-    String deleteJobById(Long jobId)  throws JobException;
+    String deleteJobById(long jobId)  throws JobException;
 }

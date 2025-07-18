@@ -25,19 +25,18 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public String updateJob(Long jobId, Job job) throws JobException {
+    public String updateJob(long jobId, Job job) throws JobException {
         boolean doesJobExist = jobRepository.existsById(jobId);
         if (doesJobExist) {
             job.setJobId(jobId);
-            Job updatedJob = jobRepository.save(job);
-            return updatedJob.toString();
+            return jobRepository.save(job).toString();
         } else {
             throw new JobException("Job with id: " + jobId + " does not exist");
         }
     }
 
     @Override
-    public String deleteJobById(Long jobId) throws JobException {
+    public String deleteJobById(long jobId) throws JobException {
         if (jobRepository.existsById(jobId)) {
             jobRepository.deleteById(jobId);
             return "Job deleted successfully";
