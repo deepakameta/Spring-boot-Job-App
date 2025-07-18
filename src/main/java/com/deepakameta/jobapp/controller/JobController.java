@@ -2,7 +2,10 @@ package com.deepakameta.jobapp.controller;
 
 import com.deepakameta.jobapp.Job;
 import com.deepakameta.jobapp.service.JobService;
+import com.deepakameta.jobapp.utils.JobException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +18,32 @@ public class JobController {
     private final JobService jobService;
 
     @GetMapping
-    public List<Job> getJobs() {
-        return jobService.findAllJobs();
+    public ResponseEntity<List<Job>> getJobs() {
+        return ResponseEntity.ok(jobService.findAllJobs());
     }
 
     @PostMapping
-    public String saveJob(@RequestBody Job job) {
-        return jobService.createJob(job);
+    public ResponseEntity<String> saveJob(@RequestBody Job job) {
+        return ResponseEntity.ok(jobService.createJob(job));
     }
 
     @PutMapping("/{jobId}")
-    public String updateJobById(@PathVariable("jobId") Long jobId, @RequestBody Job job) {
-        return jobService.updateJob(jobId, job);
+    public ResponseEntity<String> updateJobById(@PathVariable("jobId") Long jobId, @RequestBody Job job) {
+        try {
+            String result = jobService.updateJob(jobId, job);
+            return ResponseEntity.ok(result);
+        } catch (JobException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/{jobId}")
-    public String deleteJobById(@PathVariable("jobId") Long jobId) {
-        return jobService.deleteJobById(jobId);
+    public ResponseEntity<String> deleteJobById(@PathVariable("jobId") Long jobId) {
+        try {
+            String result = jobService.deleteJobById(jobId);
+            return ResponseEntity.ok(result);
+        } catch (JobException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }

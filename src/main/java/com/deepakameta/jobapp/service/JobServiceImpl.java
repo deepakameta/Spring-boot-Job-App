@@ -2,11 +2,11 @@ package com.deepakameta.jobapp.service;
 
 import com.deepakameta.jobapp.Job;
 import com.deepakameta.jobapp.repository.JobRepository;
+import com.deepakameta.jobapp.utils.JobException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -25,24 +25,24 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public String updateJob(Long jobId, Job job) {
+    public String updateJob(Long jobId, Job job) throws JobException {
         boolean doesJobExist = jobRepository.existsById(jobId);
         if (doesJobExist) {
             job.setJobId(jobId);
             Job updatedJob = jobRepository.save(job);
             return updatedJob.toString();
         } else {
-            return "Job Not Found";
+            throw new JobException("Job with id: " + jobId + " does not exist");
         }
     }
 
     @Override
-    public String deleteJobById(Long jobId) {
+    public String deleteJobById(Long jobId) throws JobException {
         if (jobRepository.existsById(jobId)) {
             jobRepository.deleteById(jobId);
             return "Job deleted successfully";
         } else {
-            return "Job not found";
+            throw new JobException("Job with id: " + jobId + " does not exist");
         }
     }
 }
