@@ -1,6 +1,6 @@
 package com.deepakameta.jobapp.controller;
 
-import com.deepakameta.jobapp.Job;
+import com.deepakameta.jobapp.model.Job;
 import com.deepakameta.jobapp.service.JobService;
 import com.deepakameta.jobapp.utils.JobException;
 import lombok.AllArgsConstructor;

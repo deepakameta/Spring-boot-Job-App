@@ -1,0 +1,10 @@
+INSERT INTO job (name, description) VALUES ('Java Developer', 'Backend developer with Spring Boot');
+INSERT INTO job (name, description) VALUES ('Frontend Developer', 'React.js and UI expert');
+INSERT INTO job (name, description) VALUES ('Android Developer', 'Jetpack Compose and Kotlin expert');
+INSERT INTO job (name, description) VALUES ('iOS Developer', 'Swift and UIKit professional');
+INSERT INTO job (name, description) VALUES ('DevOps Engineer', 'CI/CD pipelines and Docker/Kubernetes');
+INSERT INTO job (name, description) VALUES ('Data Scientist', 'Machine Learning and Data Analysis');
+INSERT INTO job (name, description) VALUES ('QA Engineer', 'Automated and Manual testing expert');
+INSERT INTO job (name, description) VALUES ('Full Stack Developer', 'Java + Angular full stack development');
+INSERT INTO job (name, description) VALUES ('Product Manager', 'Roadmap planning and stakeholder communication');
+INSERT INTO job (name, description) VALUES ('UI/UX Designer', 'Figma, user flows, and visual design expert');

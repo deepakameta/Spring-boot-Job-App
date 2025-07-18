@@ -1,6 +1,6 @@
 package com.deepakameta.jobapp.repository;
 
-import com.deepakameta.jobapp.Job;
+import com.deepakameta.jobapp.model.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
